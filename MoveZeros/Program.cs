@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 /* Hi, here's your problem today. This problem was recently asked by Facebook:
 
@@ -28,11 +30,13 @@ namespace MoveZeros
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
 
             var solution = new Solution();
             solution.RunTest1();
             solution.RunTest2();
+            solution.RunTest3();
+            solution.RunTest4();
 
         }
     }
@@ -51,13 +55,27 @@ namespace MoveZeros
             return MoveZeros(testArray);
         }
 
+        public int[] RunTest3()
+        {
+            int[] testArray = { 0, 1, 0, 3, 12 };
+            return MoveZerosWithDictionary(testArray);
+        }
+
+        public int[] RunTest4()
+        {
+            int[] testArray = { 0, 0, 0, 2, 0, 1, 3, 4, 0, 0 };
+            return MoveZerosWithDictionary(testArray);
+        }
+
+
+
         public int[] MoveZeros(int[] inputArray)
         {
             for (int i = 0; i < inputArray.Length; i++)
             {
                 if (inputArray[i] == 0)
                 {
-                    for (int j = i+1; j < inputArray.Length; j++)
+                    for (int j = i + 1; j < inputArray.Length; j++)
                     {
                         if (inputArray[j] != 0)
                         {
@@ -73,5 +91,69 @@ namespace MoveZeros
 
         }
 
+        public int[] MoveZerosWithDictionary(int[] inputArray)
+        {
+            Dictionary<int, int> dictionaryOfNonZeros = new Dictionary<int, int>();
+            List<ArrayRow> listOfNonZeros = new List<ArrayRow>();
+
+            LoadDictionary(inputArray, dictionaryOfNonZeros);
+            LoadDictList(inputArray, listOfNonZeros);
+
+            for (int i = 0; i < inputArray.Length; i++)
+            {
+                if (inputArray[i] == 0)
+                {
+
+                    //if (dictionaryOfNonZeros.TryGetValue)
+                    //if (dictionaryOfNonZeros[0])
+                    if (listOfNonZeros.Count > 0)
+                    {
+                        inputArray[i] = listOfNonZeros[0].Value;
+                        inputArray[listOfNonZeros[0].Key] = 0;
+                        listOfNonZeros.RemoveAt(0);
+                        
+                    }
+                }
+            }
+
+            return inputArray;
+        }
+
+        public void LoadDictionary(int[] inputArray, Dictionary<int, int> dictionary)
+        {
+            for (int i = 0; i < inputArray.Length; i++)
+            {
+                if (inputArray[i] != 0)
+                {
+                    if (!dictionary.ContainsKey(i))
+                    {
+                        dictionary.Add(i, inputArray[i]);
+                    }
+                }
+
+
+
+            }
+        }
+
+        public void LoadDictList(int[] inputArray, List<ArrayRow> list)
+        {
+            for (int i = 0; i < inputArray.Length; i++)
+            {
+                if (inputArray[i] != 0)
+                {
+                    list.Add(new ArrayRow() { Key = i, Value = inputArray[i] });
+                }
+            }
+        }
+
+        public class ArrayRow
+        {
+            public int Key { get; set; }
+            public int Value { get; set; }
+        }
+        
     }
 }
+
+
