@@ -1,0 +1,17 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoveZeros", "MoveZeros\MoveZeros.csproj", "{FACC0471-969C-4C5C-8108-B686E916BC76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FACC0471-969C-4C5C-8108-B686E916BC76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACC0471-969C-4C5C-8108-B686E916BC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACC0471-969C-4C5C-8108-B686E916BC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACC0471-969C-4C5C-8108-B686E916BC76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
