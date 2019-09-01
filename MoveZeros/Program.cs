@@ -93,19 +93,19 @@ namespace MoveZeros
 
         public int[] MoveZerosWithDictionary(int[] inputArray)
         {
-            Dictionary<int, int> dictionaryOfNonZeros = new Dictionary<int, int>();
+            //Dictionary<int, int> dictionaryOfNonZeros = new Dictionary<int, int>();
             List<ArrayRow> listOfNonZeros = new List<ArrayRow>();
 
-            LoadDictionary(inputArray, dictionaryOfNonZeros);
+            //LoadDictionary(inputArray, dictionaryOfNonZeros);
             LoadDictList(inputArray, listOfNonZeros);
 
             for (int i = 0; i < inputArray.Length; i++)
             {
                 if (inputArray[i] == 0)
                 {
-
                     //if (dictionaryOfNonZeros.TryGetValue)
                     //if (dictionaryOfNonZeros[0])
+
                     if (listOfNonZeros.Count > 0)
                     {
                         inputArray[i] = listOfNonZeros[0].Value;
@@ -119,22 +119,7 @@ namespace MoveZeros
             return inputArray;
         }
 
-        public void LoadDictionary(int[] inputArray, Dictionary<int, int> dictionary)
-        {
-            for (int i = 0; i < inputArray.Length; i++)
-            {
-                if (inputArray[i] != 0)
-                {
-                    if (!dictionary.ContainsKey(i))
-                    {
-                        dictionary.Add(i, inputArray[i]);
-                    }
-                }
 
-
-
-            }
-        }
 
         public void LoadDictList(int[] inputArray, List<ArrayRow> list)
         {
@@ -152,7 +137,26 @@ namespace MoveZeros
             public int Key { get; set; }
             public int Value { get; set; }
         }
+
         
+        public void LoadDictionary(int[] inputArray, Dictionary<int, int> dictionary)
+        {
+            for (int i = 0; i < inputArray.Length; i++)
+            {
+                if (inputArray[i] != 0)
+                {
+                    if (!dictionary.ContainsKey(i))
+                    {
+                        dictionary.Add(i, inputArray[i]);
+                    }
+                }
+
+
+
+            }
+        }
+        
+
     }
 }
 
